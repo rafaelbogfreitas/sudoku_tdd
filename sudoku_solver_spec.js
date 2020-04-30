@@ -1,5 +1,5 @@
 const Chai = require('chai');
-const expext = Chai.expect;
+const expect = Chai.expect;
 const solver = require('./index');
 
 
@@ -17,10 +17,10 @@ describe('Sudoku Solver', function(){
 
     let parsedBoard;
 
-    describe('#parsedBoard()', function() {
+    describe('#parseBoard()', function() {
         it('Should parse a sudoku string into a 2d array', function(){
             
-            parsedBoard = parsedBoard(board);
+            parsedBoard = parseBoard(board);
 
             let expectedBoard = [
                 [0,9,0,0,0,0,0,0,6],
@@ -34,9 +34,9 @@ describe('Sudoku Solver', function(){
                 [3,0,0,0,9,0,0,0,0]
               ];
 
-              expext(parsedBoard.length).to.equal(9);
-              expext(parsedBoard[0].length).to.equal(9);
-              expext(parsedBoard[0].length).to.eql(expectedBoard);
+              expect(parsedBoard.length).to.equal(9);
+              expect(parsedBoard[0].length).to.equal(9);
+              expect(parsedBoard).to.eql(expectedBoard);
         })
     })
 })
