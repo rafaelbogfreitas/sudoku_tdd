@@ -54,4 +54,47 @@ module.exports.checkValue = (board, y, x, num) =>
     module.exports.check3x3Square(board, y, x, num)    
 
 //solvePuzzle
+module.exports.solvePuzzle = (board, positions) => {
+    let i;
+    for(i = 0; i < positions.length;){
+        let row = positions[i][0];
+        let column = positions[i][1];
+        let match = false;
+        let value = board[row][column] + 1;
+        console.log('value ', value);
+
+        for(let j = value; j < 10;j++){
+            if(module.exports.checkValue(board, row, column, j)){
+                match = true;
+                board[row][column] = j
+                i++
+                break
+            } 
+        }
+        console.log('i ',i)
+        
+        if(!match){
+            board[row][column] = 0
+            i--
+        }
+
+        board.forEach(function(row) {
+            console.log(row.join());
+        });
+        
+    }
+    
+    board.forEach(function(row) {
+        console.log(row.join());
+    });
+
+    return board;
+}
+
 //solveSudoku
+
+module.exports.solveSudoku = board => 
+       module.exports.solvePuzzle(
+           parseBoard(board),
+           module.exports.saveEmptyPositions(parseBoard(board))
+           )
