@@ -45,6 +45,13 @@ module.exports.check3x3Square = (board, y, x, num) => {
 
     return true;
 }
+
 //checkValue
+module.exports.checkValue = (board, y, x, num) => 
+
+    module.exports.checkRow(board, y, num) && 
+    module.exports.checkColumn(board, x, num) &&
+    module.exports.check3x3Square(board, y, x, num)    
+
 //solvePuzzle
 //solveSudoku
